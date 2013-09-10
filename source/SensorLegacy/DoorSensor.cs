@@ -32,16 +32,25 @@ namespace SensorLegacy
 
         private VhptDoor _vhptDoor;
 
+        private bool _panicMode;
+
+        private bool _closed;
+
+        private bool _opened;
+
+        private VhptTravelCoordinator _vphtCoordinator;
+
         public DoorSensor(BlackHoleSensor bhs)
         {
             _modeEnabled = bool.Parse(ConfigurationManager.AppSettings.Get("modeEnabled"));
             _vhptDoor = new VhptDoor();
+            _vphtCoordinator = new VhptTravelCoordinator();
             _bhs = bhs;
         }
 
         public void Initialize()
         {
-            
+            _closed = _opened = _panicMode = false;
         }
 
         public void StartObservation()
@@ -54,10 +63,80 @@ namespace SensorLegacy
 
         private void Closed(object sender, EventArgs e)
         {
+            _closed = true;
+
+            if (this._panicMode)
+            {
+                if (this._opened)
+                {
+                    Console.WriteLine("door is open! PANIC!!!");
+
+                    if (!this._modeEnabled)
+                    {
+                        this._vphtCoordinator.TravelTo(0);
+                    }
+                }
+
+                if (this._closed)
+                {
+                    Console.WriteLine("door is closed! PANIC!!!");
+                }
+            }
+
+
+            if (!this._panicMode)
+            {
+                if (this._opened)
+                {
+                    Console.WriteLine("door is open!");
+
+                    this._vphtCoordinator.TravelTo(42);
+                }
+
+                if (this._closed)
+                {
+                    Console.WriteLine("door is closed!");
+                }
+            }
         }
 
         private void Opened(object sender, EventArgs e)
         {
+            _opened = true;
+
+            if (this._panicMode)
+            {
+                if (this._opened)
+                {
+                    Console.WriteLine("door is open! PANIC!!!");
+
+                    if (!this._modeEnabled)
+                    {
+                        this._vphtCoordinator.TravelTo(0);
+                    }
+                }
+
+                if (this._closed)
+                {
+                    Console.WriteLine("door is closed! PANIC!!!");
+                }
+            }
+
+
+            if (!this._panicMode)
+            {
+                if (this._opened)
+                {
+                    Console.WriteLine("door is open!");
+
+                    this._vphtCoordinator.TravelTo(42);
+                }
+
+                if (this._closed)
+                {
+                    Console.WriteLine("door is closed!");
+                }
+            }
         }
 
         public void StopObservation()
@@ -71,7 +150,9 @@ namespace SensorLegacy
         [EventSubscription("topic://BlackHoleDetected", typeof(OnPublisher))]
         public void HandleBlackHoleDetection(object sender, EventArgs e)
         {
-            // this.stateMachine.Fire(Events.BlackHoleDetected);
+            _panicMode = true;
+
+            Console.WriteLine("black hole detected! PANIC!!!");
         }
     }
 }

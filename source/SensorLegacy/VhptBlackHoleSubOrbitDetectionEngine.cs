@@ -28,7 +28,7 @@ namespace SensorLegacy
         public VhptBlackHoleSubOrbitDetectionEngine()
         {
             this.engine =
-                Observable.Start(() => Observable.Interval(TimeSpan.FromSeconds(10)).FirstAsync()).Subscribe(
+                Observable.Start(() => Observable.Interval(TimeSpan.FromSeconds(10)).First()).Subscribe(
                     interval => this.BlackHoleDetected(this, EventArgs.Empty));
         }
 

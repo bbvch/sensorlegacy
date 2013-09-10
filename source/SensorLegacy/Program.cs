@@ -32,6 +32,7 @@ namespace SensorLegacy
             Console.ReadLine();
             BlackHoleSensor b = new BlackHoleSensor();
             DoorSensor d = new DoorSensor(b);
+            d.Initialize();
             d.StartObservation();
 
             Console.WriteLine("---------------------------------------------------------");
