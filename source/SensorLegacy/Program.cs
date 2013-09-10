@@ -30,10 +30,15 @@ namespace SensorLegacy
             Console.WriteLine("Press any key to start sensors");
             Console.WriteLine("---------------------------------------------------------");
             Console.ReadLine();
+            BlackHoleSensor b = new BlackHoleSensor();
+            DoorSensor d = new DoorSensor(b);
+            d.StartObservation();
 
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine("Press any key to stop sensors");
             Console.ReadLine();
+            d.StopObservation();
+            b.Stop();
 
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine("Press any key to exit the sensor management.");

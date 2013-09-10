@@ -3,4 +3,31 @@
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileEBFC98CE527AA84D8B08E9F561982267/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/RelativePath/@EntryValue">..\SensorLegacy.DotSettings</s:String>
-	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/AbsolutePath/@EntryValue">C:\Projects\appccelerate\sensorlegacy.orig\source\SensorLegacy.DotSettings</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/AbsolutePath/@EntryValue">C:\Projects\appccelerate\sensorlegacy.orig\source\SensorLegacy.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Field/=FILENAME/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Field/=FILENAME/Expression/@EntryValue">getFileName()</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Field/=FILENAME/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Scope/=139FF4CE89E7094686FDA7BF5FFBBE92/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Scope/=139FF4CE89E7094686FDA7BF5FFBBE92/Type/@EntryValue">Everywhere</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Shortcut/@EntryValue">fhdr</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Text/@EntryValue">//-------------------------------------------------------------------------------&#xD;
+// &lt;copyright file="$FILENAME$" company="bbv Software Services AG"&gt;&#xD;
+//   Copyright (c) 2013&#xD;
+//&#xD;
+//   Licensed under the Apache License, Version 2.0 (the "License");&#xD;
+//   you may not use this file except in compliance with the License.&#xD;
+//   You may obtain a copy of the License at&#xD;
+//&#xD;
+//       http://www.apache.org/licenses/LICENSE-2.0&#xD;
+//&#xD;
+//   Unless required by applicable law or agreed to in writing, software&#xD;
+//   distributed under the License is distributed on an "AS IS" BASIS,&#xD;
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xD;
+//   See the License for the specific language governing permissions and&#xD;
+//   limitations under the License.&#xD;
+// &lt;/copyright&gt;&#xD;
+//-------------------------------------------------------------------------------</s:String></wpf:ResourceDictionary>
