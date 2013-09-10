@@ -18,10 +18,26 @@
 
 namespace SensorLegacy
 {
+    using System;
+
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Sirius Cybernetics Legacy Sensor Management v1.0");
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("Press any key to start sensors");
+            Console.WriteLine("---------------------------------------------------------");
+            Console.ReadLine();
+
+            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("Press any key to stop sensors");
+            Console.ReadLine();
+
+            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("Press any key to exit the sensor management.");
+            Console.ReadLine();
         }
     }
 }
