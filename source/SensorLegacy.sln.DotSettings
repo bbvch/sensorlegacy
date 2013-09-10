@@ -1,0 +1,6 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileEBFC98CE527AA84D8B08E9F561982267/RelativePriority/@EntryValue">1</s:Double>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileEBFC98CE527AA84D8B08E9F561982267/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/RelativePath/@EntryValue">..\SensorLegacy.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/AbsolutePath/@EntryValue">C:\Projects\appccelerate\sensorlegacy.orig\source\SensorLegacy.DotSettings</s:String></wpf:ResourceDictionary>
