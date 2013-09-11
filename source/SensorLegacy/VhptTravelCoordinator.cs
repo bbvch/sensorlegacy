@@ -18,10 +18,47 @@
 
 namespace SensorLegacy
 {
+    using System;
+
     public sealed class VhptTravelCoordinator
     {
         public void TravelTo(int level)
         {
+            if (level == 0)
+            {
+                using (SwitchColor.To(ConsoleColor.Red))
+                {
+                    Console.WriteLine("Too dangerous! Staying at level {0} for security reasons.", level);
+                }
+            }
+            else
+            {
+                using (SwitchColor.To(ConsoleColor.Green))
+                {
+                    Console.WriteLine("Travelling to target level {0}.", level);
+                }
+            }
+        }
+    }
+
+    public sealed class SwitchColor : IDisposable
+    {
+        private readonly ConsoleColor oldColor;
+
+        private SwitchColor(ConsoleColor color)
+        {
+            this.oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+        }
+
+        public static IDisposable To(ConsoleColor color)
+        {
+            return new SwitchColor(color);
+        }
+
+        public void Dispose()
+        {
+            Console.ForegroundColor = this.oldColor;
         }
     }
 }

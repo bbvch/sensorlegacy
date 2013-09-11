@@ -20,7 +20,7 @@ namespace SensorLegacy
 {
     using System;
 
-    public class BlackHoleSensor : Notifier
+    public class BlackHoleSensor : Notifier, IDisposable
     {
         private VhptBlackHoleSubOrbitDetectionEngine _e;
 
@@ -60,6 +60,11 @@ namespace SensorLegacy
         {
             // Toggle, toggle
             this.@on = !this.@on;
+        }
+
+        public void Dispose()
+        {
+            _e.Dispose();
         }
     }
 }

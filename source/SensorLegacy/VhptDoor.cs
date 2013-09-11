@@ -21,7 +21,7 @@ namespace SensorLegacy
     using System;
     using System.Reactive.Linq;
 
-    public sealed class VhptDoor
+    public sealed class VhptDoor : IDisposable
     {
         private readonly IDisposable observer;
 

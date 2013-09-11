@@ -24,7 +24,7 @@ namespace SensorLegacy
     using Appccelerate.EventBroker;
     using Appccelerate.EventBroker.Handlers;
 
-    public class DoorSensor : Base
+    public class DoorSensor : Base, IDisposable
     {
         private bool _modeEnabled;
 
@@ -71,10 +71,7 @@ namespace SensorLegacy
                 {
                     Console.WriteLine("door is open! PANIC!!!");
 
-                    if (!this._modeEnabled)
-                    {
-                        this._vphtCoordinator.TravelTo(0);
-                    }
+                    this._vphtCoordinator.TravelTo(!_modeEnabled ? 42 : 0);
                 }
 
                 if (this._closed)
@@ -110,10 +107,7 @@ namespace SensorLegacy
                 {
                     Console.WriteLine("door is open! PANIC!!!");
 
-                    if (!this._modeEnabled)
-                    {
-                        this._vphtCoordinator.TravelTo(0);
-                    }
+                    this._vphtCoordinator.TravelTo(!_modeEnabled ? 42 : 0);
                 }
 
                 if (this._closed)
@@ -153,6 +147,11 @@ namespace SensorLegacy
             _panicMode = true;
 
             Console.WriteLine("black hole detected! PANIC!!!");
+        }
+
+        public void Dispose()
+        {
+            _vhptDoor.Dispose();
         }
     }
 }

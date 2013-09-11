@@ -28,8 +28,8 @@ namespace SensorLegacy
         public VhptBlackHoleSubOrbitDetectionEngine()
         {
             this.engine =
-                Observable.Start(() => Observable.Interval(TimeSpan.FromSeconds(10)).First()).Subscribe(
-                    interval => this.BlackHoleDetected(this, EventArgs.Empty));
+                Observable.Timer(TimeSpan.FromSeconds(10))
+                    .Subscribe(interval => this.BlackHoleDetected(this, EventArgs.Empty));
         }
 
         public event EventHandler BlackHoleDetected = delegate { };
