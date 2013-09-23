@@ -32,7 +32,7 @@ namespace SensorLegacy
 
         private VhptDoor _vhptDoor;
 
-        private bool _panicMode;
+        private bool _pm;
 
         private bool _closed;
 
@@ -50,7 +50,7 @@ namespace SensorLegacy
 
         public void Initialize()
         {
-            _closed = _opened = _panicMode = false;
+            _closed = _opened = this._pm = false;
         }
 
         public void StartObservation()
@@ -65,9 +65,9 @@ namespace SensorLegacy
         {
             _closed = true;
 
-            if (this._panicMode)
+            if (_pm)
             {
-                if (this._opened)
+                if (_opened)
                 {
                     Console.WriteLine("door is open! PANIC!!!");
 
@@ -81,7 +81,7 @@ namespace SensorLegacy
             }
 
 
-            if (!this._panicMode)
+            if (!this._pm)
             {
                 if (this._opened)
                 {
@@ -90,7 +90,7 @@ namespace SensorLegacy
                     this._vphtCoordinator.TravelTo(42);
                 }
 
-                if (this._closed)
+                if (_closed)
                 {
                     Console.WriteLine("door is closed!");
                 }
@@ -101,7 +101,7 @@ namespace SensorLegacy
         {
             _opened = true;
 
-            if (this._panicMode)
+            if (this._pm)
             {
                 if (this._opened)
                 {
@@ -117,7 +117,7 @@ namespace SensorLegacy
             }
 
 
-            if (!this._panicMode)
+            if (!_pm)
             {
                 if (this._opened)
                 {
@@ -144,7 +144,7 @@ namespace SensorLegacy
         [EventSubscription("topic://BlackHoleDetected", typeof(OnPublisher))]
         public void HandleBlackHoleDetection(object sender, EventArgs e)
         {
-            _panicMode = true;
+            this._pm = true;
 
             Console.WriteLine("black hole detected! PANIC!!!");
         }
