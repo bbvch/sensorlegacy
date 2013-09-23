@@ -24,6 +24,9 @@ namespace SensorLegacy
     {
         static void Main(string[] args)
         {
+            // Awesome refactoring happens here when time is available!
+            var rp = new TxtRprt();
+
             Console.WriteLine("Sirius Cybernetics Legacy Sensor Management v1.0");
             Console.WriteLine("=========================================================");
             Console.WriteLine("=========================================================");
@@ -38,7 +41,7 @@ namespace SensorLegacy
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine("Press any key to stop sensors");
             Console.ReadLine();
-            d.StopObservation();
+            d.Close();
             b.Stop();
 
             Console.WriteLine("---------------------------------------------------------");

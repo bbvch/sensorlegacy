@@ -133,7 +133,7 @@ namespace SensorLegacy
             }
         }
 
-        public void StopObservation()
+        public void Close()
         {
             _bhs.Stop();
 
