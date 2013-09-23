@@ -67,6 +67,8 @@
     <Compile Include="DoorSensor.cs" />
     <Compile Include="EContext.cs" />
     <Compile Include="ExContext.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FilteredEnumerable.cs" />
     <Compile Include="GlobalEventBroker.cs" />
     <Compile Include="IBContext.cs" />
     <Compile Include="Notifier.cs" />
