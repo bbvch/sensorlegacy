@@ -19,34 +19,59 @@
 namespace SensorLegacy
 {
     using System;
+    using System.Net.Mail;
 
     class Program
     {
         static void Main(string[] args)
         {
-            // Awesome refactoring happens here when time is available!
-            var rp = new TxtRprt();
+            try
+            {
+                // Awesome refactoring happens here when time is available!
+                var rp = new TxtRprt();
 
-            Console.WriteLine("Sirius Cybernetics Legacy Sensor Management v1.0");
-            Console.WriteLine("=========================================================");
-            Console.WriteLine("=========================================================");
-            Console.WriteLine("Press any key to start sensors");
-            Console.WriteLine("---------------------------------------------------------");
-            Console.ReadLine();
-            BlackHoleSensor b = new BlackHoleSensor();
-            DoorSensor d = new DoorSensor(b);
-            d.Initialize();
-            d.StartObservation();
+                Console.WriteLine("Sirius Cybernetics Legacy Sensor Management v1.0");
+                Console.WriteLine("=========================================================");
+                Console.WriteLine("=========================================================");
+                Console.WriteLine("Press any key to start sensors");
+                Console.WriteLine("---------------------------------------------------------");
+                Console.ReadLine();
+                BlackHoleSensor b = new BlackHoleSensor();
+                DoorSensor d = new DoorSensor(b);
+                d.Initialize();
+                d.StartObservation();
 
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("Press any key to stop sensors");
-            Console.ReadLine();
-            d.Close();
-            b.Stop();
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine("Press any key to stop sensors");
+                Console.ReadLine();
+                d.Close();
+                b.Stop();
 
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("Press any key to exit the sensor management.");
-            Console.ReadLine();
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine("Press any key to exit the sensor management.");
+                Console.ReadLine();
+            }
+            catch (StackOverflowException e)
+            {
+                MailMessage objeto_mail = new MailMessage();
+                SmtpClient client = new SmtpClient();
+                client.Port = 25;
+                client.Host = "smtp.internal.mycompany.com";
+                client.Timeout = 10000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("user", "Password");
+                objeto_mail.From = new MailAddress("applicationdied@server.com");
+                objeto_mail.To.Add(new MailAddress("support@server.com"));
+                objeto_mail.Subject = "Discovered something undiscoverable";
+
+                objeto_mail.Body = "Message" + e.Data + e.HResult + e.HelpLink
+                                   + ((e.InnerException != null)
+                                       ? e.InnerException + e.InnerException.HelpLink + e.InnerException.StackTrace
+                                       : string.Empty) + e.Message + e.Source + e.StackTrace + e.TargetSite;
+
+                client.Send(objeto_mail);
+            }
         }
     }
 }
