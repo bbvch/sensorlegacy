@@ -29,7 +29,13 @@ namespace SensorLegacy
         {
             this.engine =
                 Observable.Timer(TimeSpan.FromSeconds(10))
-                    .Subscribe(interval => this.BlackHoleDetected(this, EventArgs.Empty));
+                    .Subscribe(
+                        interval =>
+                        {
+                            Console.WriteLine("Vhpt: Detection engine warming up...");
+                            this.BlackHoleDetected(this, EventArgs.Empty);
+                            Console.WriteLine("Vhpt: Detection engine powering down...");
+                        });
         }
 
         public event EventHandler BlackHoleDetected = delegate { };

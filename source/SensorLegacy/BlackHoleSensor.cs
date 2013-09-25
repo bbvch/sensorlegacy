@@ -45,7 +45,8 @@ namespace SensorLegacy
         {
             this.@on = true;
 
-            this._e.BlackHoleDetected += this.Detected;
+            _e = new VhptBlackHoleSubOrbitDetectionEngine();
+            _e.BlackHoleDetected += this.Detected;
         }
 
         private void Detected(object sender, EventArgs e)
