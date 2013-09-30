@@ -73,14 +73,17 @@ namespace SensorLegacy.Vhpt
                 if (this._opened)
                 {
                     Console.WriteLine("door is open! PANIC!!!");
-
-                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
-                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
+//
+//                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();  we really don't want to go anymwhere ehwn door is open
+//                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
 
                 if (this._closed)
                 {
                     Console.WriteLine("door is closed! PANIC!!!");
+
+                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
+                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
             }
 
@@ -91,13 +94,16 @@ namespace SensorLegacy.Vhpt
                 {
                     Console.WriteLine("door is open!");
 
-                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
-                    _vphtCoordinator.TravelTo(42);
+//                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();   same as above
+//                    _vphtCoordinator.TravelTo(42);
                 }
 
                 if (this._closed)
                 {
                     Console.WriteLine("door is closed!");
+
+                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
+                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
             }
         }
@@ -111,14 +117,14 @@ namespace SensorLegacy.Vhpt
                 if (this._opened)
                 {
                     Console.WriteLine("door is open! PANIC!!!");
-
-                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
-                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
 
                 if (this._closed)
                 {
                     Console.WriteLine("door is closed! PANIC!!!");
+
+                    VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
+                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
             }
 
