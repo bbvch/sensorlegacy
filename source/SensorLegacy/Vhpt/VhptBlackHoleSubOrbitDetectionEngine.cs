@@ -25,6 +25,8 @@ namespace SensorLegacy.Vhpt
     {
         private readonly IDisposable engine;
 
+        private EngineThingy engineThingy;
+
         public VhptBlackHoleSubOrbitDetectionEngine()
         {
             this.engine =
@@ -36,13 +38,16 @@ namespace SensorLegacy.Vhpt
                             this.BlackHoleDetected(this, EventArgs.Empty);
                             Console.WriteLine("Vhpt: Detection engine powering down...");
                         });
+
+            this.engineThingy = new EngineThingy { Engine = this.engine };
+            this.engineThingy.BlackHoleDetected += this.BlackHoleDetected;
         }
 
         public event EventHandler BlackHoleDetected = delegate { };
 
         public void Dispose()
         {
-            this.engine.Dispose();
+            this.engineThingy.Engine.Dispose();
         }
     }
 }

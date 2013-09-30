@@ -52,4 +52,24 @@ namespace SensorLegacy.Vhpt
             this.observer.Dispose();
         }
     }
+
+    public class EngineThingy
+    {
+        public IDisposable Engine { get; set; }
+
+        public void Initialize()
+        {
+            this.Engine =
+                Observable.Timer(TimeSpan.FromSeconds(10))
+                    .Subscribe(
+                        interval =>
+                        {
+                            Console.WriteLine("Vhpt: Detection engine warming up...");
+                            this.BlackHoleDetected(this, EventArgs.Empty);
+                            Console.WriteLine("Vhpt: Detection engine powering down...");
+                        });
+        }
+
+        public event EventHandler BlackHoleDetected = delegate { };
+    }
 }
