@@ -4,6 +4,8 @@
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/RelativePath/@EntryValue">..\SensorLegacy.DotSettings</s:String>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=EBFC98CE527AA84D8B08E9F561982267/AbsolutePath/@EntryValue">C:\Projects\appccelerate\sensorlegacy.orig\source\SensorLegacy.DotSettings</s:String>
+	<s:String x:Key="/Default/FilterSettingsManager/AttributeFilterXml/@EntryValue">&lt;data /&gt;</s:String>
+	<s:String x:Key="/Default/FilterSettingsManager/CoverageFilterXml/@EntryValue">&lt;data&gt;&lt;IncludeFilters /&gt;&lt;ExcludeFilters /&gt;&lt;/data&gt;</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=75670EE9F6FF3943AB87E377A8B1B35B/Field/=FILENAME/@KeyIndexDefined">True</s:Boolean>

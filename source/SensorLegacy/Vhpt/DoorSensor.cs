@@ -16,7 +16,7 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Vhpt
 {
     using System;
     using System.Configuration;
@@ -25,6 +25,8 @@ namespace SensorLegacy
 
     using Appccelerate.EventBroker;
     using Appccelerate.EventBroker.Handlers;
+
+    using SensorLegacy.Events;
 
     public class DoorSensor : Base, IDisposable
     {
@@ -44,36 +46,36 @@ namespace SensorLegacy
 
         public DoorSensor(BlackHoleSensor bhs)
         {
-            _modeEnabled = bool.Parse(ConfigurationManager.AppSettings.Get("modeEnabled"));
-            _bhs = bhs;
+            this._modeEnabled = bool.Parse(ConfigurationManager.AppSettings.Get("modeEnabled"));
+            this._bhs = bhs;
         }
 
         public void Initialize()
         {
-            _closed = _opened = this._pm = false;
+            this._closed = this._opened = this._pm = false;
         }
 
         public void StartObservation()
         {
-            _bhs.Detect();
+            this._bhs.Detect();
 
-            _vhptDoor = new VhptDoor();
-            _vhptDoor.Opened += Opened;
-            _vhptDoor.Closed += Closed;
+            this._vhptDoor = new VhptDoor();
+            this._vhptDoor.Opened += this.Opened;
+            this._vhptDoor.Closed += this.Closed;
         }
 
         private void Closed(object sender, EventArgs e)
         {
-            _closed = true;
+            this._closed = true;
 
-            if (_pm)
+            if (this._pm)
             {
-                if (_opened)
+                if (this._opened)
                 {
                     Console.WriteLine("door is open! PANIC!!!");
 
                     VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
-                    _vphtCoordinator.TravelTo(!_modeEnabled ? 42 : 0);
+                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
 
                 if (this._closed)
@@ -93,7 +95,7 @@ namespace SensorLegacy
                     _vphtCoordinator.TravelTo(42);
                 }
 
-                if (_closed)
+                if (this._closed)
                 {
                     Console.WriteLine("door is closed!");
                 }
@@ -102,7 +104,7 @@ namespace SensorLegacy
 
         private void Opened(object sender, EventArgs e)
         {
-            _opened = true;
+            this._opened = true;
 
             if (this._pm)
             {
@@ -111,7 +113,7 @@ namespace SensorLegacy
                     Console.WriteLine("door is open! PANIC!!!");
 
                     VhptTravelCoordinator _vphtCoordinator = new VhptTravelCoordinator();
-                    _vphtCoordinator.TravelTo(!_modeEnabled ? 42 : 0);
+                    _vphtCoordinator.TravelTo(!this._modeEnabled ? 42 : 0);
                 }
 
                 if (this._closed)
@@ -121,7 +123,7 @@ namespace SensorLegacy
             }
 
 
-            if (!_pm)
+            if (!this._pm)
             {
                 if (this._opened)
                 {
@@ -140,15 +142,15 @@ namespace SensorLegacy
 
         public void Close()
         {
-            _bhs.Stop();
+            this._bhs.Stop();
 
-            if (_vhptDoor == null)
+            if (this._vhptDoor == null)
             {
-                _vhptDoor = new VhptDoor();
+                this._vhptDoor = new VhptDoor();
             }
             else
             {
-                FieldInfo obF = _vhptDoor.GetType().GetField("observer");
+                FieldInfo obF = this._vhptDoor.GetType().GetField("observer");
                 if (obF != null)
                 {
                     object ob;
@@ -166,8 +168,8 @@ namespace SensorLegacy
                 }
             }
 
-            _vhptDoor.Opened -= Opened;
-            _vhptDoor.Closed -= Closed;
+            this._vhptDoor.Opened -= this.Opened;
+            this._vhptDoor.Closed -= this.Closed;
         }
 
         [EventSubscription("topic://BlackHoleDetected", typeof(OnPublisher))]
@@ -180,7 +182,7 @@ namespace SensorLegacy
 
         public void Dispose()
         {
-            _vhptDoor.Dispose();
+            this._vhptDoor.Dispose();
         }
     }
 }

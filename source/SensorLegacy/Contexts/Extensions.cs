@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ExContext.cs" company="bbv Software Services AG">
+// <copyright file="Extensions.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,14 +16,21 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Contexts
 {
+    using System;
     using System.Collections.Generic;
 
-    public interface ExContext
+    using SensorLegacy.Events;
+
+    public static class Extensions
     {
-        string Name { get; set; }
-        string Description { get; set; }
-        IEnumerable<IBContext> Behaviors { get; set; }
+        public static IEnumerable<T> Where<T>(this IEnumerable<T> source,
+            Func<T, bool> predicate)
+        {
+            var filtered = source as FilteredEnumerable<T>;
+            return filtered == null ? new FilteredEnumerable<T>(source, predicate)
+                : filtered.Where(predicate);
+        }
     }
 }

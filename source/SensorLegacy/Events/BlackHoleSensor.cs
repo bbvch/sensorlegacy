@@ -16,9 +16,11 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Events
 {
     using System;
+
+    using SensorLegacy.Vhpt;
 
     public class BlackHoleSensor : Notifier, IDisposable
     {
@@ -28,7 +30,7 @@ namespace SensorLegacy
 
         public BlackHoleSensor()
         {
-            _e = new VhptBlackHoleSubOrbitDetectionEngine();
+            this._e = new VhptBlackHoleSubOrbitDetectionEngine();
 
             try
             {
@@ -45,8 +47,8 @@ namespace SensorLegacy
         {
             this.@on = true;
 
-            _e = new VhptBlackHoleSubOrbitDetectionEngine();
-            _e.BlackHoleDetected += this.Detected;
+            this._e = new VhptBlackHoleSubOrbitDetectionEngine();
+            this._e.BlackHoleDetected += this.Detected;
         }
 
         private void Detected(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace SensorLegacy
 
         public void Dispose()
         {
-            _e.Dispose();
+            this._e.Dispose();
         }
     }
 }

@@ -16,7 +16,7 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Vhpt
 {
     using System;
 

@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="EContext.cs" company="bbv Software Services AG">
+// <copyright file="GlobalEventBroker.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,15 +16,25 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Events
 {
-    using System.Collections.Generic;
+    using Appccelerate.EventBroker;
 
-    public interface EContext
+    public static class GlobalEventBroker
     {
-        string Name{ get; set; }
-        string Description { get; set; }
+        static GlobalEventBroker()
+        {
+            _instance = new EventBroker();
+        }
 
-        IEnumerable<ExContext> Executables { get; set; }
+        private static readonly EventBroker _instance;
+
+        public static EventBroker Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
     }
 }

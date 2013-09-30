@@ -21,6 +21,10 @@ namespace SensorLegacy
     using System;
     using System.Net.Mail;
 
+    using SensorLegacy.Events;
+    using SensorLegacy.Reports;
+    using SensorLegacy.Vhpt;
+
     class Program
     {
         static void Main(string[] args)

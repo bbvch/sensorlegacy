@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="VhptBlackHoleSubOrbitDetectionEngine.cs" company="bbv Software Services AG">
+// <copyright file="VhptDoor.cs" company="bbv Software Services AG">
 //   Copyright (c) 2013
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,33 +16,40 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Vhpt
 {
     using System;
     using System.Reactive.Linq;
 
-    public sealed class VhptBlackHoleSubOrbitDetectionEngine : IDisposable
+    public sealed class VhptDoor : IDisposable
     {
-        private readonly IDisposable engine;
+        private readonly IDisposable observer;
 
-        public VhptBlackHoleSubOrbitDetectionEngine()
+        public VhptDoor()
         {
-            this.engine =
-                Observable.Timer(TimeSpan.FromSeconds(10))
-                    .Subscribe(
-                        interval =>
-                        {
-                            Console.WriteLine("Vhpt: Detection engine warming up...");
-                            this.BlackHoleDetected(this, EventArgs.Empty);
-                            Console.WriteLine("Vhpt: Detection engine powering down...");
-                        });
+            var doorIsOpen = from interval in Observable.Interval(TimeSpan.FromSeconds(1))
+                select Convert.ToBoolean(interval % 2);
+
+            this.observer = doorIsOpen.Subscribe(value =>
+            {
+                if (value)
+                {
+                    this.Opened(this, EventArgs.Empty);
+                }
+                else
+                {
+                    this.Closed(this, EventArgs.Empty);
+                }
+            });
         }
 
-        public event EventHandler BlackHoleDetected = delegate { };
+        public event EventHandler Opened = delegate { };
+
+        public event EventHandler Closed = delegate { };
 
         public void Dispose()
         {
-            this.engine.Dispose();
+            this.observer.Dispose();
         }
     }
 }

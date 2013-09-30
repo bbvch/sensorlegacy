@@ -16,7 +16,7 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Reports
 {
     using System;
     using System.Collections.Generic;
@@ -26,6 +26,8 @@ namespace SensorLegacy
     using System.Linq;
     using System.Net.Mail;
     using System.Text;
+
+    using SensorLegacy.Contexts;
 
     /// <summary>
     /// This is so awesome! We might need this in the future!!!!
@@ -37,13 +39,13 @@ namespace SensorLegacy
         // CTOR!!!
         public TxtRprt()
         {
-            _in = new StrRep();
+            this._in = new StrRep();
         }
 
         /// <inheritdoc />
         public void Report(RContext context)
         {
-            _in.Report(context);
+            this._in.Report(context);
 
             try
             {
@@ -76,12 +78,12 @@ namespace SensorLegacy
 
             public void Report(RContext ctx)
             {
-                _ctx = ctx;
+                this._ctx = ctx;
             }
 
             public override string ToString()
             {
-                return Dump(_ctx);
+                return Dump(this._ctx);
             }
 
             private static string Dump(RContext context)

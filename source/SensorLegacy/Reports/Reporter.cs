@@ -16,7 +16,7 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Reports
 {
     // Damn Resharper we know it better!
     // ReSharper disable InconsistentNaming

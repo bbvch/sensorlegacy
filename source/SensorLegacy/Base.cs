@@ -18,6 +18,8 @@
 
 namespace SensorLegacy
 {
+    using SensorLegacy.Events;
+
     public abstract class Base
     {
         protected Base()

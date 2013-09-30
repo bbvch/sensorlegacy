@@ -16,7 +16,7 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SensorLegacy
+namespace SensorLegacy.Contexts
 {
     // Made this resharper compliant!!!
     public interface IBContext

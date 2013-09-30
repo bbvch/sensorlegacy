@@ -63,23 +63,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
-    <Compile Include="BlackHoleSensor.cs" />
-    <Compile Include="DoorSensor.cs" />
-    <Compile Include="EContext.cs" />
-    <Compile Include="ExContext.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="FilteredEnumerable.cs" />
-    <Compile Include="GlobalEventBroker.cs" />
-    <Compile Include="IBContext.cs" />
+    <Compile Include="Contexts\EContext.cs" />
+    <Compile Include="Contexts\ExContext.cs" />
+    <Compile Include="Contexts\Extensions.cs" />
+    <Compile Include="Contexts\IBContext.cs" />
+    <Compile Include="Contexts\RContext.cs" />
+    <Compile Include="Events\BlackHoleSensor.cs" />
+    <Compile Include="Events\FilteredEnumerable.cs" />
+    <Compile Include="Events\GlobalEventBroker.cs" />
     <Compile Include="Notifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RContext.cs" />
-    <Compile Include="Reporter.cs" />
-    <Compile Include="TxtRprt.cs" />
-    <Compile Include="VhptBlackHoleSubOrbitDetectionEngine.cs" />
-    <Compile Include="VhptDoor.cs" />
-    <Compile Include="VhptTravelCoordinator.cs" />
+    <Compile Include="Reports\Reporter.cs" />
+    <Compile Include="Reports\TxtRprt.cs" />
+    <Compile Include="Vhpt\DoorSensor.cs" />
+    <Compile Include="Vhpt\VhptBlackHoleSubOrbitDetectionEngine.cs" />
+    <Compile Include="Vhpt\VhptDoor.cs" />
+    <Compile Include="Vhpt\VhptTravelCoordinator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
