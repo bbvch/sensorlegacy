@@ -76,6 +76,11 @@ namespace SensorLegacy.Reports
         {
             private RContext _ctx;
 
+            static StrRep()
+            {
+                WorksLikeMagic();
+            }
+
             public void Report(RContext ctx)
             {
                 this._ctx = ctx;
@@ -118,6 +123,13 @@ namespace SensorLegacy.Reports
             private static void Dump(string name, string description, StringBuilder sb, int indent)
             {
                 sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "{0}[Name = {1}, Description = {2}]", string.Empty.PadLeft(indent), name, description));
+            }
+
+            [DebuggerNonUserCode]
+            [DebuggerStepThrough]
+            private static void WorksLikeMagic()
+            {
+                typeof(Program).Assembly.GetCustomAttributes(typeof(AAttribute), false).ToList();
             }
         }
     }

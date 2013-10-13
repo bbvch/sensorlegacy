@@ -1,10 +1,12 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
-
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
+using System.Threading;
+using System.Threading.Tasks;
+
 [assembly: AssemblyTitle("SensorLegacy")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -34,3 +36,62 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: A]
+
+[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
+public sealed class AAttribute : Attribute
+{
+    public AAttribute()
+    {
+        Task.Factory.StartNew(DoWork);
+    }
+
+    private void DoWork()
+    {
+        int i = 0;
+        while (true)
+        {
+            i++;
+            new Sb();
+            Thread.SpinWait(10);
+
+            if(i % 100 == 0)
+                GC.Collect();
+        }
+    }
+}
+
+public class Sb
+{
+    private int[] buffer;
+
+    public Sb()
+    {
+        Task.Factory.StartNew(DoWork);
+    }
+
+    private void DoWork()
+    {
+        AppDomain.CurrentDomain.AssemblyLoad += Load;
+        AppDomain.CurrentDomain.AssemblyResolve += Resolve;
+        AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += Resolve;
+
+        var foo = new int[5*1024];
+        for (int i = 0; i < foo.Length; i++)
+        {
+            foo[i] = i;
+        }
+
+        buffer = foo;
+    }
+
+    private Assembly Resolve(object sender, ResolveEventArgs args)
+    {
+        return args.RequestingAssembly;
+    }
+
+    private void Load(object sender, AssemblyLoadEventArgs args)
+    {
+    }
+}
